@@ -1,0 +1,45 @@
+L'erreur "Line 1: Unexpected token" dans votre code provient d'un fichier qui contient du JSX, mais qui n'est pas correctement configuré pour être interprété. Cela peut être dû à plusieurs raisons, notamment une mauvaise configuration de Babel ou une version non prise en charge de React.
+
+Cependant, il y a également un problème directement visible dans votre code. Vous avez la ligne `"const test = ;"` qui est incorrecte et provoque une erreur. Vous ne pouvez pas simplement insérer une déclaration de variable comme une chaîne dans le JSX. Voici une version corrigée de votre code :
+
+```jsx
+import { jsx, jsxs } from "react/jsx-runtime";
+
+function App() {
+  // Exemple de déclaration de variable
+  const test = "Ceci est un test"; // Vous pouvez remplacer cela par une valeur valide ou supprimer la variable
+
+  return /* @__PURE__ */ jsxs("div", { 
+    children: [
+      /* @__PURE__ */ jsx("h1", { children: "Hello World" }),
+      test, // Utilisation de la variable `test` 
+      /* @__PURE__ */ jsx("p", { children: "React Debugger Test" })
+    ] 
+  });
+}
+
+export default App;
+```
+
+### Autres points à vérifier
+
+1. **Configuration Babel** : Assurez-vous que Babel est correctement configuré pour transpiler le code JSX. Voici un exemple de configuration `.babelrc` :
+
+   ```json
+   {
+     "presets": [
+       "@babel/preset-env",
+       "@babel/preset-react"
+     ]
+   }
+   ```
+
+2. **Version de React et React-DOM** : Assurez-vous que vous avez installé les bonnes versions de React et React-DOM dans votre projet.
+
+   ```bash
+   npm install react react-dom
+   ```
+
+3. **Versions de Node.js et NPM** : Parfois, les versions de Node.js et NPM peuvent recevoir une mise à jour qui entraîne des modifications dans la gestion des fichiers. Vous pouvez exécuter l'application avec une version stable.
+
+Si vous corrigez la ligne de code maladroite et vérifiez la configuration de votre projet, cela devrait résoudre votre problème.

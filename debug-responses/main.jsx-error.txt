@@ -1,0 +1,24 @@
+L'erreur "Line 1: Unexpected token" dans votre fichier `main.jsx` est souvent liée à un problème de configuration pour le support de la syntaxe JSX. Voici quelques points à vérifier :
+
+1. **Extensions de fichiers** : Assurez-vous que le fichier est bien enregistré avec l'extension `.jsx`.
+
+2. **Configuration Babel ou TypeScript** : Si vous utilisez Babel, assurez-vous que vous avez le preset `@babel/preset-react` installé et configuré. Pour TypeScript, vérifiez que votre configuration `tsconfig.json` a `"jsx": "react"` ou `"jsx": "react-jsx"`.
+
+3. **Vite** : Si vous utilisez Vite, il doit généralement gérer cela correctement par défaut. Vérifiez que votre configuration de Vite est correcte et que toutes les dépendances nécessaires sont installées.
+
+4. **Syntaxe JSX** : Le code semble correct pour utiliser le JSX, mais en cas de souci, essayez de simplifier ce que vous avez. Par exemple, je vous recommande d'essayer ceci :
+
+   ```javascript
+   import React from "react";
+   import { createRoot } from "react-dom/client";
+   import "./index.css";
+   import App from "./App.jsx";
+
+   createRoot(document.getElementById("root")).render(
+     <React.StrictMode>
+       <App />
+     </React.StrictMode>
+   );
+   ```
+
+Cela utilise une syntaxe JSX plus directe, qui est plus courante et facile à lire. Si vous continuez à avoir des erreurs, vérifiez les configurations et assurez-vous que votre environnement de développement est configuré pour travailler avec JSX.

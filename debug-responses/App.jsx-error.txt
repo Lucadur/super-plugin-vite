@@ -1,0 +1,19 @@
+L'erreur "Line 1: Unexpected token" est probablement due à la ligne `"const test = ;"` dans votre code. Cette ligne est syntaxiquement incorrecte, car il manque une valeur à assigner à `test`. Voici le code corrigé :
+
+```javascript
+import { jsx, jsxs } from "react/jsx-runtime";
+
+function App() {
+  const test = "Some value"; // Définissez une valeur pour 'test'.
+
+  return /* @__PURE__ */ jsxs("div", { children: [
+    /* @__PURE__ */ jsx("h1", { children: "Hello World" }),
+    test, // Vous pouvez utiliser 'test' ici si vous le souhaitez.
+    /* @__PURE__ */ jsx("p", { children: "React Debugger Test" })
+  ] });
+}
+
+export default App;
+```
+
+Assurez-vous de définir la variable correctement pour éviter cette erreur.
